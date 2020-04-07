@@ -21,7 +21,8 @@ public class XmlParserTest {
             Person person = new Person(i, "firstName " + i, "lastName " + i, LocalDate.now(), Gender.MALE, new Division(i, "Division " + i));
             array.add(person);
         }
-        PersonDynamicArray expectedArray = XmlParser.parseArray(array);
+        XmlParser.parseArrayToXml(array);
+        PersonDynamicArray expectedArray = XmlParser.parseXmlToArray();
         Assert.assertEquals(array, expectedArray);
     }
 }

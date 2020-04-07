@@ -12,15 +12,17 @@ import java.io.File;
 
 public class XmlParser {
 
-    public static PersonDynamicArray parseArray(PersonDynamicArray array) throws JAXBException {
+    public static void parseArrayToXml(PersonDynamicArray array) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(PersonDynamicArray.class, Person.class, Division.class);
         Marshaller mar = context.createMarshaller();
         mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         mar.marshal(array, new File("./array.xml"));
+    }
 
+    public static PersonDynamicArray parseXmlToArray() throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(PersonDynamicArray.class, Person.class, Division.class);
         Unmarshaller un = context.createUnmarshaller();
         return (PersonDynamicArray) un.unmarshal(new File("./array.xml"));
-
     }
 
 
